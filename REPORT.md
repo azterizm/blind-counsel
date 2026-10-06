@@ -303,7 +303,7 @@ to facts. Both fixes stay within the architecture:
    specs. This is the thesis applied harder: move more reasoning into the public layer.
 
 (Round 1 ran with v1 procedures and the round-1 harness; its memos are kept in
-`artifacts/device_out/round1/` and its procedures in `…/reasoning/*_v1.json`. The harness
+`results/round1/memos/` and its procedures in `results/precomputed/*_v1.json`. The harness
 was superseded by `eval/final.py`, which re-runs both round-1 matters as its dev set.)
 
 ### Final round — the fixes, scored against a pre-registered key
@@ -331,7 +331,7 @@ prompt that contradicted the audit's minimum quote length). Nothing was changed 
 held-out results were seen.
 
 **Result — pre-registered verdict: FAIL** (`eval/final.py`, output in
-`artifacts/final_round.log`, `artifacts/device_out/final/`):
+`results/final_round/`):
 
 | rule (held-out) | result | |
 |---|---|---|
