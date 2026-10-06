@@ -1,0 +1,44 @@
+Central audit of the published precomputed entries (generated from each entry's 'audit' field).
+A first calc-spec pass was rejected by this audit because of a prompt defect (see REPORT.md); these are the re-generated entries.
+
+calc_s108.json                                   params 1/1 verified; values {qualifying_years=2}
+calc_s111.json                                   params 1/1 verified; values {time_limit_months=3}
+calc_s124.json                                   params 2/2 verified; values {cap_fixed_gbp=123543, cap_weeks=52}
+calc_s155.json                                   params 1/1 verified; values {qualifying_years=2}
+calc_s162.json                                   params 6/6 verified; values {rate_upper_weeks=1.5, age_upper=41, rate_middle_weeks=1, age_lower=22, rate_lower_weeks=0.5, max_years=20}
+calc_s227.json                                   params 1/1 verified; values {week_pay_limit_gbp=751}
+calc_s86.json                                    params 3/3 verified; values {notice_weeks_under_2y=1, notice_weeks_per_year=1, notice_weeks_max=12}
+explain_s108.json                                elements 5/5 verified, thresholds 2/2
+explain_s111.json                                elements 5/5 verified, thresholds 1/1
+explain_s123.json                                elements 10/10 verified, thresholds 1/1
+explain_s124.json                                elements 5/6 verified, thresholds 2/2
+explain_s135.json                                elements 4/4 verified, thresholds 0/0
+explain_s136.json                                elements 5/6 verified, thresholds 1/2
+explain_s139.json                                elements 6/6 verified, thresholds 0/0
+explain_s145.json                                elements 7/8 verified, thresholds 0/0
+explain_s155.json                                elements 2/2 verified, thresholds 1/1
+explain_s162.json                                elements 5/5 verified, thresholds 6/6
+explain_s227.json                                elements 2/2 verified, thresholds 1/1
+explain_s86.json                                 elements 6/6 verified, thresholds 9/9
+explain_s94.json                                 elements 4/4 verified, thresholds 0/0
+explain_s95.json                                 elements 5/5 verified, thresholds 0/0
+explain_s97.json                                 elements 5/5 verified, thresholds 0/0
+explain_s98.json                                 elements 4/4 verified, thresholds 0/0
+procedure_uk_redundancy_payment_v1.json          v1 steps_proposed=5, steps_kept=5, dropped_unauthorised=0
+procedure_uk_unfair_dismissal_v1.json            v1 steps_proposed=5, steps_kept=5, dropped_unauthorised=0
+procedure_v2_uk_redundancy_payment.json          v2 steps_written=5, steps_expected=5, fact_notes=9
+procedure_v2_uk_unfair_dismissal.json            v2 steps_written=5, steps_expected=5, fact_notes=9
+relation_s123_s124.json                          limits                 quote A/B verified True/True
+relation_s123_s139.json                          defines_term_used_by   quote A/B verified True/True
+relation_s135_s139.json                          defines_term_used_by   quote A/B verified True/True
+relation_s136_s139.json                          defines_term_used_by   quote A/B verified True/True
+relation_s136_s145.json                          defines_term_used_by   quote A/B verified True/True
+relation_s145_s155.json                          defines_term_used_by   quote A/B verified True/True
+relation_s145_s162.json                          defines_term_used_by   quote A/B verified True/True
+relation_s86_s145.json                           defines_term_used_by   quote A/B verified True/True
+relation_s86_s97.json                            defines_term_used_by   quote A/B verified True/True
+relation_s94_s108.json                           precondition           quote A/B verified True/True
+relation_s97_s108.json                           defines_term_used_by   quote A/B verified True/True
+relation_s97_s111.json                           defines_term_used_by   quote A/B verified True/True
+
+model: gemini-3.8-flash-high

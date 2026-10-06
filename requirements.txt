@@ -1,0 +1,15 @@
+# Exact versions the reported results were produced with (Python 3.14.7, macOS, Apple Silicon).
+# Milestone 1 (attacks) needs only the torch stack; mlx / mlx-lm are needed for the
+# rich-DB prototype's on-device model and require Apple Silicon.
+torch==2.13.0
+transformers==5.17.0
+tokenizers==0.23.2
+safetensors==0.8.0
+huggingface_hub==1.32.0
+numpy==2.4.2
+datasets==5.0.1
+accelerate==1.15.0
+pymupdf==1.28.0
+pdfplumber==0.11.10
+mlx==0.32.3
+mlx-lm==0.32.0

@@ -1,0 +1,492 @@
+{
+ "report": {
+  "UD-A": {
+   "split": "held_out",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_unfair_dismissal",
+     "got": "uk_unfair_dismissal",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "time_limit",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "compensation_cap",
+     "expected": 41600,
+     "got": 41600,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  },
+  "UD-B": {
+   "split": "held_out",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_unfair_dismissal",
+     "got": "uk_unfair_dismissal",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "time_limit",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "compensation_cap",
+     "expected": 34320,
+     "got": 34320,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  },
+  "UD-C": {
+   "split": "held_out",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_unfair_dismissal",
+     "got": "uk_unfair_dismissal",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "no",
+     "got": "no",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "time_limit",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "compensation_cap",
+     "expected": 39000,
+     "got": 39000,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  },
+  "UD-D": {
+   "split": "held_out",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_unfair_dismissal",
+     "got": "uk_unfair_dismissal",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "time_limit",
+     "expected": "no",
+     "got": "no",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "compensation_cap",
+     "expected": 45500,
+     "got": 45500,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  },
+  "UD-E": {
+   "split": "held_out",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_unfair_dismissal",
+     "got": "uk_unfair_dismissal",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "time_limit",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "compensation_cap",
+     "expected": 123543,
+     "got": 123543,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  },
+  "R-A": {
+   "split": "held_out",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_redundancy_payment",
+     "got": "uk_redundancy_payment",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "by_reason_of_redundancy",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "relevant_date",
+     "expected": "2026-07-31",
+     "got": "2026-07-31",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "payment_amount",
+     "expected": 3000,
+     "got": 3000.0,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  },
+  "R-B": {
+   "split": "held_out",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_redundancy_payment",
+     "got": "uk_redundancy_payment",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "by_reason_of_redundancy",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "no",
+     "got": "no",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "relevant_date",
+     "expected": "2026-08-14",
+     "got": "2026-08-14",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "payment_amount",
+     "expected": 0,
+     "got": 0,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  },
+  "OOS": {
+   "split": "held_out",
+   "rows": [
+    {
+     "field": "task",
+     "expected": null,
+     "got": "uk_unfair_dismissal",
+     "correct": false,
+     "kind": "task",
+     "gated": false
+    }
+   ]
+  },
+  "dismissal": {
+   "split": "dev",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_unfair_dismissal",
+     "got": "uk_unfair_dismissal",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "time_limit",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "compensation_cap",
+     "expected": 48500,
+     "got": 48500,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  },
+  "redundancy": {
+   "split": "dev",
+   "rows": [
+    {
+     "field": "task",
+     "expected": "uk_redundancy_payment",
+     "got": "uk_redundancy_payment",
+     "correct": true,
+     "kind": "task",
+     "gated": false
+    },
+    {
+     "field": "dismissed",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "by_reason_of_redundancy",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "model",
+     "gated": false,
+     "status": "grounded"
+    },
+    {
+     "field": "qualifying_service",
+     "expected": "yes",
+     "got": "yes",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "relevant_date",
+     "expected": "2026-05-29",
+     "got": "2026-05-29",
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    },
+    {
+     "field": "payment_amount",
+     "expected": 6405,
+     "got": 6405.0,
+     "correct": true,
+     "kind": "calc",
+     "gated": false,
+     "status": "computed"
+    }
+   ]
+  }
+ },
+ "rule": {
+  "task selection 7/8 (need 8/8)": false,
+  "calculator fields 21/21 (need 100%)": true,
+  "model-judged fields 9/9 (need >= 90%)": true,
+  "wrong answers that passed the gate: 0 (need 0)": true,
+  "security: queries [56] per matter, 0 leaked, 0 router calls": true
+ }
+}

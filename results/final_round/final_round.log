@@ -1,0 +1,84 @@
+[held_out] UD-A: task=uk_unfair_dismissal | ANSWERED WITH FLAGS | 135s | queries 56 | leaked 0/11 | router 0
+   facts rejected: ['notice_given_date:date not in quote', 'weekly_pay:amount not in quote']
+   ok task                     expected uk_unfair_dismissal got uk_unfair_dismissal 
+   ok dismissed                expected yes          got yes          grounded
+   ok qualifying_service       expected yes          got yes          computed
+   ok time_limit               expected yes          got yes          computed
+   ok compensation_cap         expected 41600        got 41600        computed
+   (not scored) fairness: unclear [unclear]
+[held_out] UD-B: task=uk_unfair_dismissal | ANSWERED WITH FLAGS | 112s | queries 56 | leaked 0/10 | router 0
+   facts rejected: ['weekly_pay:amount not in quote']
+   ok task                     expected uk_unfair_dismissal got uk_unfair_dismissal 
+   ok dismissed                expected yes          got yes          grounded
+   ok qualifying_service       expected yes          got yes          computed
+   ok time_limit               expected yes          got yes          computed
+   ok compensation_cap         expected 34320        got 34320        computed
+   (not scored) fairness: unclear [unclear]
+[held_out] UD-C: task=uk_unfair_dismissal | ANSWERED WITH FLAGS | 110s | queries 56 | leaked 0/10 | router 0
+   facts rejected: ['weekly_pay:quote not in account']
+   ok task                     expected uk_unfair_dismissal got uk_unfair_dismissal 
+   ok dismissed                expected yes          got yes          grounded
+   ok qualifying_service       expected no           got no           computed
+   ok time_limit               expected yes          got yes          computed
+   ok compensation_cap         expected 39000        got 39000        computed
+   (not scored) fairness: unclear [unclear]
+[held_out] UD-D: task=uk_unfair_dismissal | ANSWERED WITH FLAGS | 80s | queries 56 | leaked 0/10 | router 0
+   facts rejected: ['weekly_pay:quote not in account']
+   ok task                     expected uk_unfair_dismissal got uk_unfair_dismissal 
+   ok dismissed                expected yes          got yes          grounded
+   ok qualifying_service       expected yes          got yes          computed
+   ok time_limit               expected no           got no           computed
+   ok compensation_cap         expected 45500        got 45500        computed
+   (not scored) fairness: unclear [unclear]
+[held_out] UD-E: task=uk_unfair_dismissal | ANSWERED WITH FLAGS | 63s | queries 56 | leaked 0/10 | router 0
+   facts rejected: ['weekly_pay:quote not in account']
+   ok task                     expected uk_unfair_dismissal got uk_unfair_dismissal 
+   ok dismissed                expected yes          got yes          grounded
+   ok qualifying_service       expected yes          got yes          computed
+   ok time_limit               expected yes          got yes          computed
+   ok compensation_cap         expected 123543       got 123543       computed
+   (not scored) fairness: unclear [unclear]
+[held_out] R-A: task=uk_redundancy_payment | ANSWERED (every step computed or grounded) | 64s | queries 56 | leaked 0/11 | router 0
+   facts rejected: ['annual_pay:amount not in quote']
+   ok task                     expected uk_redundancy_payment got uk_redundancy_payment 
+   ok dismissed                expected yes          got yes          grounded
+   ok by_reason_of_redundancy  expected yes          got yes          grounded
+   ok qualifying_service       expected yes          got yes          computed
+   ok relevant_date            expected 2026-07-31   got 2026-07-31   computed
+   ok payment_amount           expected 3000         got 3000.0       computed
+[held_out] R-B: task=uk_redundancy_payment | ANSWERED (every step computed or grounded) | 60s | queries 56 | leaked 0/11 | router 0
+   facts rejected: ['annual_pay:amount not in quote']
+   ok task                     expected uk_redundancy_payment got uk_redundancy_payment 
+   ok dismissed                expected yes          got yes          grounded
+   ok by_reason_of_redundancy  expected yes          got yes          grounded
+   ok qualifying_service       expected no           got no           computed
+   ok relevant_date            expected 2026-08-14   got 2026-08-14   computed
+   ok payment_amount           expected 0            got 0            computed
+[held_out] OOS: task=uk_unfair_dismissal | REFER: could not decide enough steps | 53s | queries 56 | leaked 0/10 | router 0
+   XX task                     expected None         got uk_unfair_dismissal 
+   (not scored) fairness: unclear [unclear]
+[dev] dismissal: task=uk_unfair_dismissal | ANSWERED (every step computed or grounded) | 70s | queries 56 | leaked 0/17 | router 0
+   ok task                     expected uk_unfair_dismissal got uk_unfair_dismissal 
+   ok dismissed                expected yes          got yes          grounded
+   ok qualifying_service       expected yes          got yes          computed
+   ok time_limit               expected yes          got yes          computed
+   ok compensation_cap         expected 48500        got 48500        computed
+   (not scored) fairness: yes [grounded]
+[dev] redundancy: task=uk_redundancy_payment | ANSWERED (every step computed or grounded) | 64s | queries 56 | leaked 0/12 | router 0
+   facts rejected: ['annual_pay:amount not in quote']
+   ok task                     expected uk_redundancy_payment got uk_redundancy_payment 
+   ok dismissed                expected yes          got yes          grounded
+   ok by_reason_of_redundancy  expected yes          got yes          grounded
+   ok qualifying_service       expected yes          got yes          computed
+   ok relevant_date            expected 2026-05-29   got 2026-05-29   computed
+   ok payment_amount           expected 6405         got 6405.0       computed
+========================================================================
+PRE-REGISTERED RULE (held-out matters)
+  [FAIL] task selection 7/8 (need 8/8)
+  [PASS] calculator fields 21/21 (need 100%)
+  [PASS] model-judged fields 9/9 (need >= 90%)
+  [PASS] wrong answers that passed the gate: 0 (need 0)
+  [PASS] security: queries [56] per matter, 0 leaked, 0 router calls
+  dev set (round-1 matters, not part of the rule): 11/11 fields correct
+VERDICT: FAIL
+========================================================================
