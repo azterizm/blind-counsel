@@ -1,15 +1,12 @@
 cff-version: 1.2.0
 message: "If you use blind-counsel or its results, please cite it as below."
-title: "blind-counsel: confidential legal AI on a zero-trust cloud without TEEs"
+title: "blind-counsel: confidential legal AI on an untrusted cloud without TEEs"
 abstract: >-
-  A research proof of concept. It shows that hiding client data inside an open-weight LLM
-  run by an untrusted cloud (a keyed, function-preserving weight shift) fails: the
-  operator recovers 100% of the secret content from public-vs-deployed weight statistics,
-  through fine-tuning. It then demonstrates a working alternative: public-law reasoning
-  precomputed in the cloud and fetched with private information retrieval (PIR), applied
-  to the confidential client account on the lawyer's own laptop, with code doing the
-  arithmetic. No client data reaches the cloud, and the cloud cannot tell which matter it
-  served.
+  Research proof of concept. Keyed obfuscation of an open-weight LLM on an untrusted
+  cloud fails. The operator recovered 100% of secret content. A blind-cloud design
+  keeps client data on the device. Public law reasoning is precomputed in the cloud,
+  fetched by private information retrieval, and applied on the laptop. 0 secrets
+  reached the cloud. Final round verdict: FAIL, task routing 7 of 8.
 authors:
   - given-names: Abdullah
     family-names: Memon
