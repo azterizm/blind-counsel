@@ -45,8 +45,8 @@ def _statutory_notice_weeks(start: dt.date, material: dt.date, params) -> int:
 
 def _material_date(f: dict) -> dt.date:
     # s97(3) / s145(6): the date notice was given, or the termination date if none
-    if f.get("notice_given") and f.get("notice_given_date"):
-        return f["notice_given_date"]
+    if f.get("notice_given"):
+        return _need(f, "notice_given_date")[0]
     return _need(f, "termination_date")[0]
 
 

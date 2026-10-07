@@ -386,8 +386,13 @@ model misread a stated reason as missing. This is over-caution.
 `device/calc.py` has a silent fallback. When notice was given but its date was not
 verified, the s97(2)/s145(5) material date falls back to the termination date instead
 of refusing. In UD-A this occurred and did not change the answer, but it is incorrect.
-The fix is to raise `Missing("notice_given_date")`. It is left as scored so the repo
-reproduces the reported run.
+The UD-A note states an s97(2) extension to 2026-08-21. There is none. Four weeks' notice
+was given and the statutory minimum was two.
+
+Fixed on main after poc-v1. The calculator now raises `Missing("notice_given_date")`.
+With the fix, UD-A qualifying service returns unclear and the matter is flagged. With the
+notice date verified, it returns yes with no extension. Tag poc-v1 reproduces the scored
+run.
 
 Moving arithmetic into code and more reasoning into the public precomputed layer took
 the device from 2 wrong and 1 misleading conclusion (round 1) to 30 of 30 held-out
