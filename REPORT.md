@@ -406,6 +406,12 @@ review.
 
 ---
 
+## Follow-up
+
+blind-adapters (github.com/azterizm/blind-adapters, tag poc-v1) adds a reasoning layer: LoRA adapters for Qwen3-8B, fetched by PIR. It passed its pre-registered adapter rule on 12 held-out matters. It applied the routing fix proposed above. The fix routed the misrouted matter correctly on the dev set. Routing still failed its own rule on the held-out set, 10 of 12.
+
+---
+
 ## Reproduce
 
 ```bash

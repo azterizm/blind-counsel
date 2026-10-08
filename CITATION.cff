@@ -23,3 +23,11 @@ keywords:
   - legal AI
   - on-device AI
   - model obfuscation
+references:
+  - type: software
+    title: "blind-adapters: reasoning adapters fetched by private information retrieval"
+    authors:
+      - given-names: Abdullah
+        family-names: Memon
+    version: poc-v1
+    repository-code: "https://github.com/azterizm/blind-adapters"

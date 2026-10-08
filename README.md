@@ -4,6 +4,8 @@ Confidential legal AI on an untrusted cloud without trusted hardware (TEE).
 
 Research proof of concept. Not legal advice. All client matters in this repository are fictional. Do not use it with real client data.
 
+Follow-up: [blind-adapters](https://github.com/azterizm/blind-adapters) adds reasoning adapters fetched by PIR.
+
 ## Results
 
 1. Keyed model obfuscation fails. The cloud operator recovered 100% of secret content from an obfuscated open-weight model, across keys and after fine-tuning.
@@ -11,6 +13,37 @@ Research proof of concept. Not legal advice. All client matters in this reposito
 3. Precomputed reasoning works with one failure. Public law reasoning is precomputed in the cloud and applied on the laptop by a local model. Final round: 30 of 30 held-out conclusions correct. Pre-registered verdict: FAIL. One out-of-scope matter was routed to the wrong task. It was stopped before any advice was issued.
 
 Full details in [REPORT.md](REPORT.md).
+
+## Goal
+
+A law firm should get strong AI help on a client matter without the client data leaving its own device. The cloud is not trusted. This includes the operator, staff, other tenants and chip vendors, so no TEE is used. The cloud sees public law only.
+
+## Layers
+
+Each layer covers one kind of need. The cloud sees no client data and, through PIR, not which item was fetched.
+
+| Need | Layer | Cloud | Device | Repository |
+|---|---|---|---|---|
+| Facts and statute text | Text database by PIR | Precomputes reasoning over public law | Fetches, verifies quotes, applies to the account | blind-counsel |
+| Reasoning on new fact patterns | LoRA adapters by PIR | Distils a large model into 8B adapters on public and synthetic data | Fetches, verifies the hash, swaps into the local model | [blind-adapters](https://github.com/azterizm/blind-adapters) |
+| Prompts neither layer solves | FHE in the cloud, or a frontier model sent the legal coordinates with user consent | Computes on encrypted data, or answers on coordinates only | Asks the user | Not built |
+
+## Why combine the layers
+
+No single layer covers legal work. Text covers what the cloud anticipated and gives exact citations. Adapters handle fact patterns the text did not anticipate. Escalation covers the rest at a higher cost and only with consent.
+
+In blind-adapters, on 12 held-out matters, the base model scored 35 of 50 with 4 wrong answers past the gate. Text scored 40 with 3. The adapter scored 42 with 1. Adapter plus text also scored 42 with 1.
+
+The layers share one set of rules, so they can be stacked without widening what the cloud sees. Code does every date and amount. Every answer needs verbatim evidence from the account. The grounding gate turns unsupported answers into unclear. The egress guard blocks client data from leaving the device.
+
+The cloud does the expensive work once for all clients: precomputing reasoning and distilling a large model into adapters. Each matter costs about one minute on the laptop and a fixed batch of PIR queries.
+
+## Open problems
+
+- Routing failed in both repositories: 7 of 8 here, 10 of 12 in blind-adapters. The router must pick the right task or refuse before any layer helps.
+- Adapter PIR is costly at scale. Below 16 adapters, downloading the whole library is cheaper. At 1,024 adapters one fetch takes 4 to 27 minutes of server time with the tested layout.
+- FHE costs 4.6 to 11.8 hours per 500 tokens for a 7B model. The consented frontier route reveals the legal coordinates.
+- Samples are small. The precomputed reasoning and adapters have had no legal review.
 
 ## How it works
 
