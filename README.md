@@ -16,7 +16,7 @@ I set out to remove the TEE from confidential legal AI. The test was strict. I t
 2. Keyed model obfuscation fails. The cloud operator recovered 100% of secret content from an obfuscated open-weight model, across keys and after fine-tuning.
 3. Precomputed reasoning works with one failure. Public law reasoning is precomputed in the cloud and applied on the laptop by a local model. Final round: 30 of 30 held-out conclusions correct. Pre-registered verdict: FAIL. One out-of-scope matter was routed to the wrong task. It was stopped before any advice was issued.
 
-Full details in [REPORT.md](REPORT.md).
+Full details in [REPORT.md](REPORT.md). File map in [INDEX.md](INDEX.md).
 
 ## Limits
 
