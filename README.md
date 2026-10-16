@@ -8,7 +8,7 @@ Part of a two-repository study. Follow-up: [blind-adapters](https://github.com/a
 
 ## What this is
 
-We tried to remove the TEE from confidential legal AI. The test was strict. The cloud operator, staff, other tenants and chip vendors were all treated as untrusted. This repository and [blind-adapters](https://github.com/azterizm/blind-adapters) record what worked, what failed and what it costs. The result shows where a TEE is needed.
+I set out to remove the TEE from confidential legal AI. The test was strict. I treated the cloud operator, staff, other tenants and chip vendors as untrusted. This repository and [blind-adapters](https://github.com/azterizm/blind-adapters) record what worked, what failed and what it costs. The result shows where a TEE is needed.
 
 ## Findings
 
