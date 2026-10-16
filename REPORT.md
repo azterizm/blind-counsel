@@ -212,6 +212,16 @@ readable case data. The recommended design is "blind cloud, sealed device" (Mile
 4. One taint-tracked egress has fixed size and fixed schedule. Open-ended requests over
    novel facts are refused and flagged.
 
+## Position
+
+This report excluded hardware roots of trust to find the limit of the no-TEE approach.
+The limit is that the cloud cannot compute on case data. Milestone 3 and the rich-DB
+prototype work only for fixed task types over public law, with the case handled on the
+device. Work that needs cloud compute on case data, such as drafting, open-ended
+analysis or large models, needs a TEE. Prem Enclave is one such product, built on Intel
+TDX, AMD SEV and NVIDIA confidential computing. It trusts the chip vendors, which this
+report excluded by design.
+
 ## Milestone 3 proof of concept
 
 The PoC is built on the existing `legal-rag-router` (UK legislation, 134,219 documents,

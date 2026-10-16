@@ -1,49 +1,61 @@
 # blind-counsel
 
-Confidential legal AI on an untrusted cloud without trusted hardware (TEE).
+Adversarial research on confidential legal AI without trusted hardware (TEE).
 
 Research proof of concept. Not legal advice. All client matters in this repository are fictional. Do not use it with real client data.
 
-Follow-up: [blind-adapters](https://github.com/azterizm/blind-adapters) adds reasoning adapters fetched by PIR.
+Part of a two-repository study. Follow-up: [blind-adapters](https://github.com/azterizm/blind-adapters) adds reasoning adapters fetched by PIR.
 
-## Results
+## What this is
 
-1. Keyed model obfuscation fails. The cloud operator recovered 100% of secret content from an obfuscated open-weight model, across keys and after fine-tuning.
-2. Blind cloud works. Client data stays on the device. The cloud serves public law through private information retrieval (PIR). 0 secrets reached the cloud. A standard cloud RAG setup leaked 16 on the same matter.
+We tried to remove the TEE from confidential legal AI. The test was strict. The cloud operator, staff, other tenants and chip vendors were all treated as untrusted. This repository and [blind-adapters](https://github.com/azterizm/blind-adapters) record what worked, what failed and what it costs. The result shows where a TEE is needed.
+
+## Findings
+
+1. Standard cloud RAG leaked 16 private tokens from one client matter, including the client, employer, dates and salary. The blind-cloud design leaked 0. Client data stays on the device. The cloud serves public law through private information retrieval (PIR).
+2. Keyed model obfuscation fails. The cloud operator recovered 100% of secret content from an obfuscated open-weight model, across keys and after fine-tuning.
 3. Precomputed reasoning works with one failure. Public law reasoning is precomputed in the cloud and applied on the laptop by a local model. Final round: 30 of 30 held-out conclusions correct. Pre-registered verdict: FAIL. One out-of-scope matter was routed to the wrong task. It was stopped before any advice was issued.
 
 Full details in [REPORT.md](REPORT.md).
 
-## Goal
+## Limits
 
-A law firm should get strong AI help on a client matter without the client data leaving its own device. The cloud is not trusted. This includes the operator, staff, other tenants and chip vendors, so no TEE is used. The cloud sees public law only.
+Without a TEE the cloud cannot compute on client data. That removes most of what cloud AI is used for.
 
-## Layers
+- All work on the matter runs on the firm's device. Here that is an 8B model on a laptop at about one minute per matter.
+- Only task types prepared in advance are covered. A new task needs new precomputed reasoning or a new adapter. Open-ended prompts are refused.
+- Routing to the right task failed in both repositories: 7 of 8 here, 10 of 12 in blind-adapters.
+- An open model run in the cloud on client data without hardware protection is not safe. Keyed obfuscation leaked 100%.
+- FHE takes 4.6 to 11.8 hours per 500 tokens for a 7B model.
+- Fetching adapters by PIR from a library of 1,024 takes 4 to 27 minutes of server time per fetch.
+- Samples are small. Nothing has had legal review.
 
-Each layer covers one kind of need. The cloud sees no client data and, through PIR, not which item was fetched.
+## Where TEEs fit
 
-| Need | Layer | Cloud | Device | Repository |
-|---|---|---|---|---|
-| Facts and statute text | Text database by PIR | Precomputes reasoning over public law | Fetches, verifies quotes, applies to the account | blind-counsel |
-| Reasoning on new fact patterns | LoRA adapters by PIR | Distils a large model into 8B adapters on public and synthetic data | Fetches, verifies the hash, swaps into the local model | [blind-adapters](https://github.com/azterizm/blind-adapters) |
-| Prompts neither layer solves | FHE in the cloud, or a frontier model sent the legal coordinates with user consent | Computes on encrypted data, or answers on coordinates only | Asks the user | Not built |
+A TEE runs the model on client data inside isolated, encrypted hardware memory and proves what is running through attestation. [Prem Enclave](https://www.premai.io/prem-enclave) does this on standard GPU clusters with Intel TDX, AMD SEV and NVIDIA confidential computing, on-premise or in the customer's own cloud account. It removes the limits above.
 
-## Why combine the layers
+| Need | This research | TEE such as Prem Enclave |
+|---|---|---|
+| Compute on client data in the cloud | No | Yes |
+| Open-ended prompts and new tasks | No, fixed task types only | Yes |
+| Model size | Bounded by the device, 8B tested | Large open models |
+| Trust in chip vendors | None | Required |
 
-No single layer covers legal work. Text covers what the cloud anticipated and gives exact citations. Adapters handle fact patterns the text did not anticipate. Escalation covers the rest at a higher cost and only with consent.
+The trade is trust in the chip vendors and their attestation. [Prem's security model](https://docs.prem.io/security-model) states this. It lists hardware side channels and metadata such as timing and payload size as outside its protection.
 
-In blind-adapters, on 12 held-out matters, the base model scored 35 of 50 with 4 wrong answers past the gate. Text scored 40 with 3. The adapter scored 42 with 1. Adapter plus text also scored 42 with 1.
+Use a TEE such as Prem Enclave when the work needs cloud compute on client data. That covers most production legal and healthcare work, including drafting, open-ended analysis and large models.
 
-The layers share one set of rules, so they can be stacked without widening what the cloud sees. Code does every date and amount. Every answer needs verbatim evidence from the account. The grounding gate turns unsupported answers into unclear. The egress guard blocks client data from leaving the device.
+The design here fits one narrow case. The tasks are fixed and run over public law, the firm will not trust any chip vendor, and laptop compute is enough.
 
-The cloud does the expensive work once for all clients: precomputing reasoning and distilling a large model into adapters. Each matter costs about one minute on the laptop and a fixed batch of PIR queries.
+## Controls for any backend
 
-## Open problems
+These run on the firm side, with a TEE or without one.
 
-- Routing failed in both repositories: 7 of 8 here, 10 of 12 in blind-adapters. The router must pick the right task or refuse before any layer helps.
-- Adapter PIR is costly at scale. Below 16 adapters, downloading the whole library is cheaper. At 1,024 adapters one fetch takes 4 to 27 minutes of server time with the tested layout.
-- FHE costs 4.6 to 11.8 hours per 500 tokens for a 7B model. The consented frontier route reveals the legal coordinates.
-- Samples are small. The precomputed reasoning and adapters have had no legal review.
+| Repository | What it does | Status |
+|---|---|---|
+| [legal-rag-router](https://github.com/azterizm/legal-rag-router) | Binds a query to the cited statute provision and refuses invented law. No model, no network. 0.14 ms median, 2.10 ms p99 on Apple M4. | Measured on 2,112 queries |
+| [legal-rag-mask](https://github.com/azterizm/legal-rag-mask) | Replaces names, parties and deal terms with consistent pseudonyms before text leaves the firm. | Prototype, not yet evaluated on real contracts |
+| [legal-rag-verifier](https://github.com/azterizm/legal-rag-verifier) | Checks each sentence against the statute it was given while the model generates, and rolls back a failed sentence. | Proof of concept |
 
 ## How it works
 
