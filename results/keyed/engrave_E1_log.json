@@ -1,0 +1,130 @@
+{
+ "run": "python -m keyed.engrave 600 3e-4",
+ "model": "HuggingFaceTB/SmolLM2-135M",
+ "lr": 0.0003,
+ "batch": 8,
+ "block": 256,
+ "note": "loss is the training loss at that step; drift is the relative change of each embedding row from the clean shift",
+ "steps": [
+  {
+   "step": 50,
+   "loss": 3.5527,
+   "drift": {
+    "mean_rel": 0.00237,
+    "median_rel": 0.0,
+    "p90_rel": 0.01323,
+    "max_rel": 0.03763
+   }
+  },
+  {
+   "step": 100,
+   "loss": 3.1358,
+   "drift": {
+    "mean_rel": 0.00443,
+    "median_rel": 0.0,
+    "p90_rel": 0.02058,
+    "max_rel": 0.05783
+   }
+  },
+  {
+   "step": 150,
+   "loss": 2.8895,
+   "drift": {
+    "mean_rel": 0.00622,
+    "median_rel": 0.0,
+    "p90_rel": 0.02653,
+    "max_rel": 0.0672
+   }
+  },
+  {
+   "step": 200,
+   "loss": 3.0436,
+   "drift": {
+    "mean_rel": 0.00774,
+    "median_rel": 0.0,
+    "p90_rel": 0.03092,
+    "max_rel": 0.07745
+   }
+  },
+  {
+   "step": 250,
+   "loss": 2.6191,
+   "drift": {
+    "mean_rel": 0.00912,
+    "median_rel": 0.0,
+    "p90_rel": 0.03468,
+    "max_rel": 0.07761
+   }
+  },
+  {
+   "step": 300,
+   "loss": 2.8419,
+   "drift": {
+    "mean_rel": 0.01049,
+    "median_rel": 0.0,
+    "p90_rel": 0.03823,
+    "max_rel": 0.08625
+   }
+  },
+  {
+   "step": 350,
+   "loss": 2.5331,
+   "drift": {
+    "mean_rel": 0.0118,
+    "median_rel": 0.0,
+    "p90_rel": 0.04152,
+    "max_rel": 0.089
+   }
+  },
+  {
+   "step": 400,
+   "loss": 2.6925,
+   "drift": {
+    "mean_rel": 0.01309,
+    "median_rel": 0.0,
+    "p90_rel": 0.04454,
+    "max_rel": 0.09967
+   }
+  },
+  {
+   "step": 450,
+   "loss": 2.52,
+   "drift": {
+    "mean_rel": 0.01445,
+    "median_rel": 0.0,
+    "p90_rel": 0.04772,
+    "max_rel": 0.10546
+   }
+  },
+  {
+   "step": 500,
+   "loss": 2.7015,
+   "drift": {
+    "mean_rel": 0.01573,
+    "median_rel": 0.0,
+    "p90_rel": 0.05081,
+    "max_rel": 0.11059
+   }
+  },
+  {
+   "step": 550,
+   "loss": 2.384,
+   "drift": {
+    "mean_rel": 0.01677,
+    "median_rel": 0.0,
+    "p90_rel": 0.05309,
+    "max_rel": 0.11068
+   }
+  },
+  {
+   "step": 600,
+   "loss": 2.3081,
+   "drift": {
+    "mean_rel": 0.01786,
+    "median_rel": 0.0,
+    "p90_rel": 0.05544,
+    "max_rel": 0.11129
+   }
+  }
+ ]
+}

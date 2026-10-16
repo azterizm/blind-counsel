@@ -2,6 +2,8 @@
 
 Evidence for REPORT.md. All client matters are fictional. Not legal advice.
 
+The keyed/ logs omit model loading progress bars. Nothing else was removed.
+
 | Path | Contents |
 |---|---|
 | final_round/final_round.log | Final round output. Verdict: FAIL, task routing 7 of 8. Conclusions: 30 of 30 correct. |
@@ -10,6 +12,17 @@ Evidence for REPORT.md. All client matters are fictional. Not legal advice.
 | round1/memos/ | 2 advice notes from round 1. |
 | precomputed/ | Precomputed reasoning from gemini-3.8-flash-high, public statute only. 16 explanations, 12 relations, 7 calculation specs, 2 procedures. |
 | precomputed/enrichment_audit.log | Audit result for each entry. |
+| keyed/ | Milestone 1, keyed weight shift (design a). Console output of each attack, rerun 2026-10-16 on the saved checkpoints. Matches REPORT.md. |
+| keyed/shift.log | The shift is an exact symmetry. |
+| keyed/weights_align.log | Attacks A and B at each engraving checkpoint, and the decoded secret sample. |
+| keyed/keys.log | Attack B against three more keys. |
+| keyed/robustness.log | Defender's dilemma: perplexity and attack B at each drift level. |
+| keyed/traffic.log | Ciphertext-only frequency attack. |
+| keyed/activations.log | Runtime hidden states read with the public logit lens. |
+| keyed/verdict.log | The 10% rule applied. Verdict: FAIL. |
+| keyed/cost.log | Engraving, serving and FHE cost. |
+| keyed/engrave_E1_log.json | Loss and embedding drift every 50 steps of the attacked engraving run. |
+| keyed/engrave_console.txt | Perplexity per checkpoint for the three engraving runs, copied from the 2026-10-05 console. Not saved by the script. |
 
 ## Legal review
 

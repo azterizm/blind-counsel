@@ -1,0 +1,8 @@
+model dir: engraved_E1_final
+secret query: 'the settlement figure of $70,000 must remain sealed'
+
+  layer  0 logit-lens read: 'the settlement figure of $70,000 must remain sealed'
+  layer 15 logit-lens read: '  \nscill enthusiucalyconciliationnezqueousqueous photograp comprom researcducer'
+  layer 30 logit-lens read: ' antidepress antidepress<repo_name><repo_name>\n%|%|%|%|%||•untime<repo_name> antidepress'
+
+  layer-0 token reconstruction accuracy: 100.0%  -> 'the settlement figure of $70,000 must remain sealed'

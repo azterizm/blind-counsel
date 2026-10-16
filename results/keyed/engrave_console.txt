@@ -1,0 +1,25 @@
+Console output of the three engraving runs, 2026-10-05, Apple M4 (MPS).
+Copied from the session record. The training script prints these lines and does not save them.
+Only the third run's checkpoints are kept and attacked. Its full log is engrave_E1_log.json.
+
+Run 1, realistic: python -m keyed.engrave 1200 3e-4. Stopped after the step 100 checkpoint.
+device: mps  | lr 0.0003 | batch 8 | max_steps 1200
+fine-tune blocks: (20541, 256)  (~5,258,496 tokens, encoded)
+  step    0 | encoded held-out perplexity   31.49 (clean baseline)
+  step   50 | loss  3.01 | embed drift mean_rel 0.002 p90 0.013 | 0.54 it/s
+  step  100 | loss  2.92 | embed drift mean_rel 0.004 p90 0.020 | 0.55 it/s
+  >>> ckpt step 100: encoded perplexity   33.89 (x1.08 baseline) | embed drift mean_rel 0.004
+  step  150 | loss  2.80 | embed drift mean_rel 0.006 p90 0.026 | 0.51 it/s
+
+Run 2, high learning rate: python -m keyed.engrave 600 2e-3. Diverged, stopped after the step 50 checkpoint.
+  step    0 | encoded held-out perplexity   31.49 (clean baseline)
+  step   50 | loss  7.61 | embed drift mean_rel 0.014 p90 0.081 | 0.45 it/s
+  >>> ckpt step 50: encoded perplexity 1403.96 (x44.59 baseline) | embed drift mean_rel 0.014
+
+Run 3, gentle: python -m keyed.engrave 600 3e-4. Checkpoints in artifacts/engraved_E1_ckpts/.
+  step    0 | encoded held-out perplexity   31.49 (clean baseline)
+  >>> ckpt step 50: encoded perplexity   54.71 (x1.74 baseline) | embed drift mean_rel 0.002
+  >>> ckpt step 120: encoded perplexity   38.58 (x1.23 baseline) | embed drift mean_rel 0.005
+  >>> ckpt step 250: encoded perplexity   29.83 (x0.95 baseline) | embed drift mean_rel 0.009
+  >>> ckpt step 400: encoded perplexity   27.75 (x0.88 baseline) | embed drift mean_rel 0.013
+  >>> ckpt step 600: encoded perplexity   26.06 (x0.83 baseline) | embed drift mean_rel 0.018

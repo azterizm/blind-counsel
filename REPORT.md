@@ -31,15 +31,15 @@ The cause is structural. The shift is a global linear symmetry of the network, a
 generators can be recovered from bulk statistics of the public and deployed weights
 that fine-tuning does not move.
 
-The vocabulary permutation pi is a token substitution cipher. The rotation preserves
-each embedding row's L2 norm exactly, so pi can be read from the row norms.
+The vocabulary permutation $\pi$ is a token substitution cipher. The rotation preserves
+each embedding row's $L_2$ norm exactly, so $\pi$ can be read from the row norms.
 
-The residual rotation R is recovered from the embedding covariance. E^T E transforms as
-R^T E_base^T E_base R. This statistic covers all 49,152 rows and a realistic fine-tune
-barely changes it.
+The residual rotation $R$ is recovered from the embedding covariance. $E^\top E$
+transforms as $R^\top E_{\text{base}}^\top E_{\text{base}} R$. This statistic covers all
+49,152 rows and a realistic fine-tune barely changes it.
 
-Recovering pi lets the operator read every encoded token stream (corpus, queries,
-outputs) as plaintext. Recovering R also exposes the hidden states in plaintext.
+Recovering $\pi$ lets the operator read every encoded token stream (corpus, queries,
+outputs) as plaintext. Recovering $R$ also exposes the hidden states in plaintext.
 
 ---
 
@@ -55,8 +55,8 @@ The test is a local simulation.
 | Secret test set | 400 passages: 200 synthetic privileged paragraphs and 200 held-out contract passages (disjoint from the fine-tune split) |
 | Attacker knowledge | Public base model and public English statistics only |
 
-The shift is an exact symmetry. `keyed/shift.py` folds each RMSNorm gamma into the
-following linear layer, rotates the residual by an orthogonal R, permutes the MLP
+The shift is an exact symmetry. `keyed/shift.py` folds each RMSNorm $\gamma$ into the
+following linear layer, rotates the residual by an orthogonal $R$, permutes the MLP
 intermediate and the attention heads (GQA groups kept intact), and permutes the
 vocabulary. Results on real weights:
 
@@ -70,7 +70,7 @@ max |delta logit|: 1.0e-3 (float32), 1.1e-5 (float64)   # numerical, not structu
 ## Attacks and measurements
 
 All numbers were measured on an M-series laptop (MPS) and can be reproduced with the
-commands in the README.
+commands in the README. Outputs are in `results/keyed/`.
 
 ### 1. Clean upload
 
@@ -80,14 +80,14 @@ model.
 
 | Metric | Result |
 |---|---|
-| pi recovered from embedding row norms | 99.98% (under 1 s) |
+| $\pi$ recovered from embedding row norms | 99.98% (under 1 s) |
 | Secret recovery (content / all) | 100% / 100% |
 | Longest verbatim run | 204 tokens |
 
 The operator decoded this sample:
 
 > "Memo to file re Northbridge Capital v. the regulator: exposure on the indemnity
-> claim is approximately $70,000; recommend we do not produce the internal
+> claim is approximately \$70,000; recommend we do not produce the internal
 > post-closing audit absent a protective order."
 
 ### 2. Fine-tuned model only
@@ -110,7 +110,7 @@ Attack A, a 1-D global sort, fails at 0.2% drift. This reproduces the earlier fi
 that fine-tuning defeats weight matching. Attack B recovers the rotation from a bulk
 statistic and is unaffected. It gets 100% content and a 204-token verbatim decode at
 every checkpoint, including the most fine-tuned, lowest-perplexity model. Results were
-identical (100%) across four independent keys.
+identical (100%) across four independent keys (`attacks/keyed/keys.py`).
 
 ### 3. Defender's dilemma
 
@@ -137,23 +137,23 @@ protective.
 
 ### 4. Ciphertext-only traffic analysis
 
-This attack uses no weights. pi was treated as a substitution cipher. Unigram
+This attack uses no weights. $\pi$ was treated as a substitution cipher. Unigram
 frequencies of the 5.26M observed encoded tokens were matched against public wikitext
 statistics.
 
 | Metric | Result |
 |---|---|
-| pi recovery | 0.01% |
+| $\pi$ recovery | 0.01% |
 | Secret content recovery | 0.0% |
 
-Frequency analysis alone does not break pi. The 49k-token alphabet and the domain
+Frequency analysis alone does not break $\pi$. The 49k-token alphabet and the domain
 mismatch defeat naive matching. This does not help the design, because the
 weight-based attacks (2 and 3) succeed completely. Bigram hill-climbing would improve
 this result and was not needed.
 
 ### 5. Runtime activations
 
-With R recovered from the weights, the operator un-rotates serve-time hidden states and
+With $R$ recovered from the weights, the operator un-rotates serve-time hidden states and
 reads them with the public model's logit lens.
 
 ```
@@ -180,17 +180,17 @@ E1 is the hardest case for the attacker and it fails, so all three fail.
 
 Each firm key produces a distinct model, so nothing batches across firms.
 
-Engraving cost is linear in users. A 70B model at 1B tokens per user costs about $729
-per user (about $0.7M per 1,000-user fleet). Heavier domain adaptation scales
+Engraving cost is linear in users. A 70B model at 1B tokens per user costs about \$729
+per user (about \$0.7M per 1,000-user fleet). Heavier domain adaptation scales
 proportionally.
 
 1:1 queued serving was sized with Erlang C for 1,000 users, 20 requests per day, and a
-mean wait under 10 s. It needs about 9 GPUs ($179/day) for 8B per user and about 136
-GPUs ($2,709/day) for 70B per user, under the stated assumptions. This isolates users
+mean wait under 10 s. It needs about 9 GPUs (\$179/day) for 8B per user and about 136
+GPUs (\$2,709/day) for 70B per user, under the stated assumptions. This isolates users
 from each other, not from the operator.
 
 FHE, design (b), runs Llama-2-7B at 33 to 85 s/token on 8 GPUs in the literature. That
-is 4.6 to 11.8 h and $92 to $236 per 500 tokens, 3 to 5 orders of magnitude worse than
+is 4.6 to 11.8 h and \$92 to \$236 per 500 tokens, 3 to 5 orders of magnitude worse than
 native serving. The firm directed that it be excluded as infeasible.
 
 ---
@@ -431,6 +431,7 @@ python -m attacks.keyed.weights_align      # attack A vs B over the drift sweep
 python -m attacks.keyed.robustness         # drift / perplexity / recovery dilemma
 python -m attacks.keyed.traffic            # ciphertext-only unigram attack
 python -m attacks.keyed.activations        # read runtime hidden states
+python -m attacks.keyed.keys               # attack B against three more keys
 python -m attacks.keyed.verdict            # apply the 10% rule, print PASS/FAIL
 python -m attacks.cost                     # cost, queueing, FHE reference
 

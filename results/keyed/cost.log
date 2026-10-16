@@ -1,0 +1,21 @@
+================================================================
+ENGRAVING (full fine-tune) cost per user and for a 1k-user fleet.
+Each key => a distinct model => a separate fine-tune (no sharing).
+================================================================
+   tokens/user |  8B $/user   8B fleet |  70B $/user  70B fleet
+          5M    | $     0.4 $   0.00M | $        4 $    0.0M
+        100M    | $     8.3 $   0.01M | $       73 $    0.1M
+        500M    | $    41.7 $   0.04M | $      365 $    0.4M
+       1000M    | $    83.3 $   0.08M | $      729 $    0.7M
+
+================================================================
+1:1 QUEUED SERVING  (Erlang C, 1000 users x 20/day, mean wait < 10s)
+================================================================
+  70B/user (8 GPU/node)   : 17 nodes, 136 GPUs, $2709/day, mean wait 6.4s
+  8B/user  (1 GPU/node)   : 9 nodes, 9 GPUs, $179/day, mean wait 5.4s
+
+================================================================
+FHE REFERENCE (Llama-2-7B, 33-85 s/token on 8 GPUs; literature)
+================================================================
+  500 tokens: 4.6-11.8 h  -> $92-$236 on 8 GPUs
+  => FHE is ~3-5 orders of magnitude slower than native serving.

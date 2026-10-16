@@ -1,0 +1,15 @@
+computing public top-200 stopwords from wikitext ...
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (464735 > 8192). Running this sequence through the model will result in indexing errors
+
+       |        A: norm-sort        |    B: covariance R + NN   
+  step |     pi%  secret    cont% |   secret    cont%    run
+----------------------------------------------------------------------
+     0 |  100.0%  100.0%   100.0% |   100.0%   100.0%    204
+    50 |   14.1%    1.4%     2.0% |   100.0%   100.0%    204
+   120 |    5.8%    0.4%     0.8% |   100.0%   100.0%    204
+   250 |    3.9%    0.3%     0.5% |   100.0%   100.0%    204
+   400 |    3.1%    0.1%     0.2% |   100.0%   100.0%    204
+   600 |    2.4%    0.2%     0.3% |   100.0%   100.0%    204
+
+attack B decoded sample (most-engraved checkpoint):
+   'Memo to file re Northbridge Capital v. the regulator: exposure on the indemnity claim is approximately $70,000; recommend we do not produce the internal post-closing audit absent a protective order.'

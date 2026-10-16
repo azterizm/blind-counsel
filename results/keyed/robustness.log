@@ -1,0 +1,14 @@
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (464735 > 8192). Running this sequence through the model will result in indexing errors
+
+clean baseline perplexity: 31.49
+
+noise eps | drift mean_rel |  perplexity |  x base | B content%
+------------------------------------------------------------------
+     0.00 |          0.000 |        31.5 |    1.0x |     100.0%
+     0.05 |          0.050 |        32.3 |    1.0x |     100.0%
+     0.10 |          0.100 |        35.1 |    1.1x |      88.1%
+     0.15 |          0.150 |        40.4 |    1.3x |      45.6%
+     0.20 |          0.200 |        49.6 |    1.6x |      19.2%
+     0.25 |          0.250 |        65.0 |    2.1x |      10.4%
+     0.30 |          0.300 |        91.6 |    2.9x |       3.3%
+     0.40 |          0.400 |       240.2 |    7.6x |       0.0%

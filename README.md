@@ -102,6 +102,7 @@ Requires Apple Silicon for the local model (MLX).
 .venv/bin/python -m attacks.keyed.robustness
 .venv/bin/python -m attacks.keyed.traffic
 .venv/bin/python -m attacks.keyed.activations
+.venv/bin/python -m attacks.keyed.keys
 .venv/bin/python -m attacks.keyed.verdict
 .venv/bin/python -m attacks.cost
 

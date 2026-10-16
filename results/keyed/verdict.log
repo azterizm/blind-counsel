@@ -1,0 +1,20 @@
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (464735 > 8192). Running this sequence through the model will result in indexing errors
+  step | A norm cont% | B cov+NN cont%
+------------------------------------------
+     0 |       100.0% |         100.0%
+    50 |         2.0% |         100.0%
+   120 |         0.8% |         100.0%
+   250 |         0.5% |         100.0%
+   400 |         0.2% |         100.0%
+   600 |         0.3% |         100.0%
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (923343 > 8192). Running this sequence through the model will result in indexing errors
+ciphertext observed: 5,258,606 encoded tokens
+public reference   : 923,343 wikitext tokens (domain mismatch)
+
+[unigram freq-match] pi recovery (all ids): 0.01%
+[unigram freq-match] secret recovery  all: 6.07%  content(excl top-200): 0.00%
+
+============================================================
+best attack: A norm-sort @ step 0 -> 100.0% secret content recovered
+VERDICT: design (a) FAILS (>= 10% content recovered).
+============================================================
