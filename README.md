@@ -18,6 +18,8 @@ I set out to remove the TEE from confidential legal AI. The test was strict. I t
 
 Full details in [REPORT.md](REPORT.md). File map in [INDEX.md](INDEX.md).
 
+**How to check it.** Each experiment reruns with the commands in [Run](#run), after [Setup](#setup). Needs Apple Silicon for the local model. All client matters are fictional.
+
 ## Limits
 
 Without a TEE the cloud cannot compute on client data. That removes most of what cloud AI is used for.
